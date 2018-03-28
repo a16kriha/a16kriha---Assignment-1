@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 public class MainActivity extends AppCompatActivity {
     // Create a private member variable that can hold our WebView
@@ -36,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
         // 4. Create a new WebViewClient to attach to our WebView. This allows us to
         //    browse the web inside our app.
         // 5. Enter the url to load in our WebView
+
+        WebView webView = new WebView(this);
+        setContentView(webView);
+        webView.loadUrl("http://wwwlab.iit.his.se/a16kriha/Project/DCS%20Keybinds/");
+
+        // Enables localStorage and JavaScript capabilities
+        WebSettings settings = webView.getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setDomStorageEnabled(true);
+
     }
 
     @Override
