@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity {
     // Create a private member variable that can hold our WebView
@@ -22,31 +23,16 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // The FAB-code can be removed
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        // 1. Create a WebView element in the layout file content_main.xml
-        // 2. Give the WebView element created in step 1 ID "my_webview"
-        // Enter your code that creates your WebView here...
-        // 3. Locate the WebView element created in step 1 using the ID created in step 2
-        // 4. Create a new WebViewClient to attach to our WebView. This allows us to
-        //    browse the web inside our app.
-        // 5. Enter the url to load in our WebView
-
         WebView webView = new WebView(this);
         setContentView(webView);
-        webView.loadUrl("http://wwwlab.iit.his.se/a16kriha/Project/DCS%20Keybinds/");
+        webView.loadUrl("file:///android_asset/local.html");
 
         // Enables localStorage and JavaScript capabilities
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
+
+        webView.setWebViewClient(new WebViewClient());
 
     }
 
